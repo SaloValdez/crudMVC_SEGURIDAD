@@ -26,6 +26,34 @@ require_once "conexion.php";
       $stmt ->close();
       }
 
+
+      #INTENTOS USUARIO
+	#-------------------------------------
+
+	public function intentosUsuarioModel($datosModel, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET intentos = :intentos WHERE usuario = :usuario");
+		$stmt->bindParam(":intentos", $datosModel["actualizarIntentos"], PDO::PARAM_INT);
+		$stmt->bindParam(":usuario", $datosModel["usuarioActual"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "success";
+
+		}
+
+		else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+	}
+
+
+
+
        //VISTA DE USUARIOS
        public function vistaUsuarioModel($tabla){
            $stmt= Conexion::conectar()->prepare("SELECT  id,usuario,password,email  FROM $tabla ");

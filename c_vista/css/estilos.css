@@ -66,6 +66,18 @@ h1{
  margin: 7px;
  width: 250px;
 }
+
+.registro form input#usuRegistro{
+  /*VALIDADDO SOLO MINUSCULA*/
+    text-transform: lowercase;
+}
+
+.registro input[type=password]{
+  font-size: 1em;
+  height: 30px;
+ margin: 7px;
+ width: 250px;
+}
 .registro input[type=submit]{
   font-size: 1em;
   height: 40px;

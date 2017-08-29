@@ -22,5 +22,9 @@
 
            ?>
     </section>
+
+    <script type="text/javascript" src="c_vista/js/validarRegistro.js">
+
+    </script>
 </body>
 </html>
