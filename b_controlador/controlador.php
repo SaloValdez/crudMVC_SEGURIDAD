@@ -53,9 +53,9 @@
 			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["contra"]) &&
 			   preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["email"])){
 				#crypt() devolverá el hash de un string utilizando el algoritmo estándar basado en DES de Unix o algoritmos alternativos que puedan estar disponibles en el sistema.
-          // criptar = crypt($_POST["contra"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+          $criptar = crypt($_POST["contra"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 				$datosController = array( "usuario"=>$_POST["usu"],
-									      "password"=>$_POST["contra"],
+									      "password"=>$criptar,
 									      "email"=>$_POST["email"]);
 				$respuesta = Datos::registroUsuarioModel($datosController, "usuario");
 				if($respuesta == "success"){
@@ -70,7 +70,7 @@
 
 
 
-
+  
 
 
 
@@ -113,10 +113,10 @@
 			if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["usuIngreso"]) &&
 			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["contraIngreso"])){
 
-          // criptar = crypt($_POST["contraIngreso"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+          $criptar = crypt($_POST["contraIngreso"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
 				$datosController = array( "usuario"=>$_POST["usuIngreso"],
-									      "password"=>$_POST["contraIngreso"]);
+									      "password"=>$criptar);
 
 				$respuesta = Datos::ingresoUsuarioModel($datosController, "usuario");
 
@@ -126,7 +126,7 @@
 
 				if($intentos < $maximoIntentos){
 
-					if($respuesta["usuario"] ==$_POST["usuIngreso"] && $respuesta["password"] == $_POST["contraIngreso"]){
+					if($respuesta["usuario"] ==$_POST["usuIngreso"] && $respuesta["password"] == $criptar){
 
 						session_start();
 

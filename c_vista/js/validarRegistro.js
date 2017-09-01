@@ -29,7 +29,7 @@
               //  ¨si la variable usuario es diferente a vacia?
                   var caracteres = password.length; //cuenta la longetud caracteres
                   var expresion =/^[a-zA-Z0-9]*$/; //SOLO SE ACEPTARA ESTOS CARACTERES  EN ESTE CAMPO
-                  if (caracteres > 6) {
+                  if (caracteres > 9) {
                     document.querySelector("label[for='contraRegistro']").innerHTML +="<br>Escriba menos de 6 caracteres.";
                     // innerHTML = colocar en html una linea de texto
                     return false;
